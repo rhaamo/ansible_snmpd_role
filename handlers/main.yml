@@ -3,4 +3,4 @@
   service:
     name: snmpd
     state: restarted
-  when: '{{ snmpd_enabled }}'
+  when: snmpd_enabled

@@ -8,7 +8,6 @@
 
 - name: Install SNMP Daemon
   apt:
-    name: "{{ item }}"
+    name: "{{ query('flattened', '{{ snmpd_debian_packages }}') }}"
     state: present
-  with_flattened: '{{ snmpd_debian_packages }}'
   when: ansible_distribution == 'Debian'

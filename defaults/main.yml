@@ -1,16 +1,3 @@
-# SNMPD Ansible Role
-
-Based on https://github.com/Oefenweb/ansible-snmpd without the user auth thing and more things.
-
-Import in playbook:
-```yaml
-- hosts: all
-  roles:
-      - { role: rhaamo.snmpd, become: true }
-```
-
-Default config:
-```yaml
 ---
 
 # Default packages for snmpd
@@ -81,4 +68,3 @@ snmpd_link_up_down_notifications: true
 #   - name: farts
 #     prog: /usr/local/bin/yolo
 snmpd_extensions: []
-```

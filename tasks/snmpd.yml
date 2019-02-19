@@ -1,0 +1,32 @@
+- name: Setup /etc/default/snmpd.conf
+  template:
+    src: etc/default/snmpd.jinja2
+    dest: /etc/default/snmpd
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart snmpd
+  when: ansible_distribution == 'Debian'
+
+- name: Setup /etc/snmp/snmpd.conf
+  template:
+    src: etc/snmp/snmpd.jinja2
+    dest: /etc/snmp/snmpd.conf
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart snmpd
+
+- name: Enable and start SNMPD
+  service:
+    name: snmpd
+    state: "started"
+    enabled: True
+  when: snmpd_enabled
+
+- name: Disable and stop SNMPD
+  service:
+    name: snmpd
+    state: "stopped"
+    enabled: False
+  when: not snmpd_enabled

@@ -1,0 +1,14 @@
+---
+
+- name: Ensure that HTTPS transport for APT is installed
+  apt:
+    name: "apt-transport-https"
+    state: present
+  when: ansible_distribution == 'Debian'
+
+- name: Install SNMP Daemon
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_flattened: '{{ snmpd_debian_packages }}'
+  when: ansible_distribution == 'Debian'

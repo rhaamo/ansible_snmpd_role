@@ -1,0 +1,8 @@
+---
+
+- name: Install epel-release
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_flattened: '{{ snmpd_redhat_packages }}'
+  when: ansible_distribution == 'RedHat'

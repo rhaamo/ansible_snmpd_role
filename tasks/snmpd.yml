@@ -6,7 +6,7 @@
     group: root
     mode: 0644
   notify: restart snmpd
-  when: ansible_distribution == 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: Setup /etc/snmp/snmpd.conf
   template:

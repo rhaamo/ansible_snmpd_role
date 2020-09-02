@@ -3,11 +3,11 @@
   service:
     name: snmpd
     state: restarted
-  when: snmpd_enabled and ansible_os_family != 'FreeBSD' and freebsd_bsnmp: False
+  when: snmpd_enabled and ansible_os_family != 'FreeBSD' and freebsd_bsnmp == False
 
 - name: restart bsnmpd
   service:
     name: bsnmpd
     state: restarted
-  when: snmpd_enabled and ansible_os_family == 'FreeBSD' and freebsd_bsnmp: True
+  when: snmpd_enabled and ansible_os_family == 'FreeBSD' and freebsd_bsnmp == True
 

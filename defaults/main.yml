@@ -11,6 +11,8 @@ snmpd_redhat_packages:
 
 freebsd_bsnmp: False
 
+snmpd_file_group: root
+
 # Should we start and enable the daemon
 snmpd_enabled: True
 

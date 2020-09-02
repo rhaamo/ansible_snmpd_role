@@ -3,7 +3,7 @@
     src: etc/default/snmpd.jinja2
     dest: /etc/default/snmpd
     owner: root
-    group: root
+    group: snmpd_file_group
     mode: 0644
   notify: restart snmpd
   when: ansible_os_family == 'Debian'
@@ -13,7 +13,7 @@
     src: etc/snmp/snmpd.jinja2
     dest: /etc/snmp/snmpd.conf
     owner: root
-    group: root
+    group: snmpd_file_group
     mode: 0600
   notify: restart snmpd
 

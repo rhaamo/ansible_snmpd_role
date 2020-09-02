@@ -9,6 +9,8 @@ snmpd_redhat_packages:
   - net-snmp
   - net-snmp-utils
 
+freebsd_bsnmp: False
+
 # Should we start and enable the daemon
 snmpd_enabled: True
 

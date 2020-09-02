@@ -5,4 +5,8 @@
 
 - name: "SNMPD Configuration"
   include_tasks: snmpd.yml
-  
+  when: ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'RedHat'
+
+- name: "BSNMPD Configuration"
+  include_tasks: bsnmpd.yml
+  when: ansible_facts['os_family'] == 'FreeBSD'

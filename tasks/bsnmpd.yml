@@ -1,0 +1,22 @@
+- name: Setup /etc/snmpd.config
+  template:
+    src: etc/bsnmpd.config.jinja2
+    dest: /etc/snmpd.config
+    owner: root
+    group: wheel
+    mode: "0600"
+  notify: restart snmpd
+
+- name: Enable and start BSNMPD
+  service:
+    name: bsnmpd
+    state: "started"
+    enabled: True
+  when: snmpd_enabled
+
+- name: Disable and stop BSNMPD
+  service:
+    name: bsnmpd
+    state: "stopped"
+    enabled: False
+  when: not snmpd_enabled
